@@ -51,12 +51,15 @@ USER_AGENTS = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:11.0) Gecko/2010
                    'Chrome/19.0.1084.46'
                    'Safari/536.5'),)
 
-SLEEP_SEC_FOR_EACH_REQUEST = 3
+SLEEP_SEC_FOR_EACH_REQUEST = 1
 DRY_RUN = True
 DEFAULT_LANG = 'en'
 
 OUTPUT_STRING_PATTERN = '    <string name="{}">{}</string>\n'
 
+
+def escape_xml(s):
+    return escape(s).replace('"', '&quot;').replace("'", '&apos;')
 
 class LocaleFile:
     """
@@ -123,8 +126,7 @@ class ResourceFinder:
         return a list of tuple(id, string xml entity)
         """
 
-        def escape_xml(s):
-            return escape(s).replace('"', '&quot;').replace("'", '&apos;')
+
 
         idAttrib = '{http://schemas.android.com/apk/res/android}id'
         str_tag = 'string'
@@ -294,8 +296,11 @@ def main():
     parser.add_argument('-i', '--root_file', help='root/base resource path', required=False,
                         default=os.path.join(curr_dir, '..', 'app', 'src', 'main', 'res', 'values',
                                              'strings.xml'))
-
+    parser.add_argument('-d', '--dryrun', help='Dry run without sending a request',
+                        action='store_true')
     args = parser.parse_args()
+    global DRY_RUN
+    DRY_RUN = args.dryrun
     run(set(args.exclude_languages.split(',')), args.root_file, Translator(), ResourceFinder())
 
 

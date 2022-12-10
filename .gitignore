@@ -111,3 +111,8 @@ ENV/
 .idea/
 
 *.bak
+
+# Test data
+./test_data/app/src/main/res/values-zh-rTW/strings.xml
+./test_data/app/src/main/res/values-af/strings.xml
+
