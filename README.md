@@ -18,5 +18,5 @@ python3 src/dayun/translator.py --root_file ./test_data/app/src/main/res/values/
 ## Test
 
 ```
-python3 src/dayun/translator.py --root_file ./test_data/app/src/main/res/values/strings.xml --exclude_languages=af,ca --dry_run=True
+python3 src/dayun/translator.py --root_file ./test_data/app/src/main/res/values/strings.xml --exclude_languages=af,ca --dryrun
 ```
