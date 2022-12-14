@@ -1,5 +1,8 @@
 # AndroidStringResTranslationTool
 
+## Description
+This CLI tool allows Android developers to easily internationalize their applications by translating English strings in their resource files to other languages with a single command. This enables them to deploy their applications to any country.
+
 ## Usage
 
 ### Basic
