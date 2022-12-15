@@ -33,7 +33,7 @@ from xml.sax.saxutils import escape
 import re
 
 try:
-    import urllib2 as request
+    import urllib3 as request
     from urllib import quote
 except:
     from urllib import request
